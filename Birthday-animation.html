@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        color: white;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+    }
+
+    h1 {
+        font-size: 13.5em;
+        text-align: center;
+    }
+
+    .balloon {
+        width: 40px;
+        height: 60px;
+        border-radius: 50% 50% 50% 50%;
+        position: fixed;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(100vh);
+        }
+
+        25% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(100vh);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+
+    }
+</style>
+
+<body>
+    <h1>Happy <br> Birth Day</h1>
+</body>
+<script type="text/javascript">
+    "use strict"
+    function getRandomColor() {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        return `rgb(${r},${g},${b})`;
+    }
+    // console.log(getRandomColor());
+    function balloon() {
+        let div = document.createElement("div");
+        div.className = "balloon";
+        div.style.backgroundColor = getRandomColor();
+        div.style.left = `${Math.random() * 100}%`;
+        div.style.top = "-20px";
+        div.style.animation = "fall 5s linear";
+        document.body.appendChild(div);
+
+        setTimeout(function () {
+            div.remove();
+        }, 5000)
+    }
+    setInterval(balloon, 40);
+</script>
+
+</html>
